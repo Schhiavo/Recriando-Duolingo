@@ -4,6 +4,22 @@ let pergunta = {
    correta: 1
 }; //criado objeto pergunta
 
+function start(){
+
+   let alts = document.querySelectorAll('.alternativa');
+   alts.forEach(function(element, index){
+      element.addEventListener('click', function(){
+         if(index == pergunta.correta){
+            console.log("Acertou!");
+         }
+         else{
+            console.log("Errou!");
+         }
+      })
+   })
+    mostraquestao(pergunta);
+} //uma nova função para sempre adicionar um evento a cada questão criada no app, que vai ser responsavel por "ouvir" o evento click do mouse e verificar se a alternativa está correta
+
 function mostraquestao(q){
      let titleDiv = document.getElementById('titulo'); // titleDiv está recebendo o elemento do id título
      titleDiv.textContent = q.titulo; //O conteudo de texto do elemento DOM pego pelo titleDiv, vai receber o título do objeto pergunta que foi passado como parametro na função
@@ -12,18 +28,9 @@ function mostraquestao(q){
 
      alts.forEach(function(element, index){
         element.textContent = q.alternativas[index];// um loop usando ForEach(para cada), que para cada elemento guardado em alts, ele vai exibir um conteudo do array alternativas, começando pelo indice 0
-
-        element.addEventListener('click', function(){
-         if(index == q.correta){
-            console.log("Acertou!")
-         }
-         else{
-            console.log("Errou!")
-         }
-        }) // um ouvinte que vai identificar quando o mouse clicar nas alternativas e vai chamar a função que vai verificar se a alternativa clicada possui o indice correto do array
      })
 
 }
 
-mostraquestao(pergunta);
+start();
 
