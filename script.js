@@ -17,29 +17,36 @@ let perguntas = [
 ]
 
 let app = {
-
  start: function(){
-
+   this.Atualpos = 0;
    let alts = document.querySelectorAll('.alternativa');
    alts.forEach((element, index)=>{
       element.addEventListener('click', ()=>{
         this.checaResposta(index);
       })
    })
-    this.mostraquestao(perguntas);
-}, //uma nova função para sempre adicionar um evento a cada questão criada no app, que vai ser responsavel por "ouvir" o evento click do mouse e verificar se a alternativa está correta
+    this.mostraquestao(perguntas[this.Atualpos]);
+}, 
 
 mostraquestao: function(q){
    this.qatual = q;
-     let titleDiv = document.getElementById('titulo'); // titleDiv está recebendo o elemento do id título
-     titleDiv.textContent = q.titulo; //O conteudo de texto do elemento DOM pego pelo titleDiv, vai receber o título do objeto pergunta que foi passado como parametro na função
+     let titleDiv = document.getElementById('titulo'); 
+     titleDiv.textContent = q.titulo; 
 
-     let alts = document.querySelectorAll('.alternativa'); // alts vai receber todos os elementos html que possuem a classe "alternativa"
+     let alts = document.querySelectorAll('.alternativa'); 
 
      alts.forEach(function(element, index){
-        element.textContent = q.alternativas[index];// um loop usando ForEach(para cada), que para cada elemento guardado em alts, ele vai exibir um conteudo do array alternativas, começando pelo indice 0
+        element.textContent = q.alternativas[index];
      })
 },
+
+Proximaperg: function(){
+   this.Atualpos++;
+   if(this.Atualpos == perguntas.length){
+      this.Atualpos = 0;
+   }
+},
+
 checaResposta: function(user){
      if(this.qatual.correta == user){
       console.log("Correta");
@@ -47,6 +54,8 @@ checaResposta: function(user){
      else{
       console.log("Errada");
      }
+     this.Proximaperg();
+     this.mostraquestao(perguntas[this.Atualpos]);
 }
 }
 app.start();
