@@ -19,12 +19,14 @@ let perguntas = [
 let app = {
  start: function(){
    this.Atualpos = 0;
+   this.Totalpontos = 0;
    let alts = document.querySelectorAll('.alternativa');
    alts.forEach((element, index)=>{
       element.addEventListener('click', ()=>{
         this.checaResposta(index);
       })
    })
+   this.atualizaPontos();
     this.mostraquestao(perguntas[this.Atualpos]);
 }, 
 
@@ -50,12 +52,19 @@ Proximaperg: function(){
 checaResposta: function(user){
      if(this.qatual.correta == user){
       console.log("Correta");
+      this.Totalpontos++;
      }
      else{
       console.log("Errada");
      }
+     this.atualizaPontos();
      this.Proximaperg();
      this.mostraquestao(perguntas[this.Atualpos]);
+},
+atualizaPontos: function(){
+   let scoreDiv = document.getElementById('pontos');
+   scoreDiv.textContent = `Sua pontuação é:  
+   ${this.Totalpontos}`;
 }
 }
 app.start();
