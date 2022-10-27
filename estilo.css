@@ -1,46 +1,51 @@
 body {
-    background: #58cc02;
-    font-family: Nunito;
-    text-align: center;
-}
+  background: #58cc02;
+  font-family: Nunito;
+  text-align: center;
+} /* definido cor de fundo, fonte e alinhamento do texto */
+
 #wrapper {
-    margin-top: 40px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#wrapper div, #wrapper ul {
-    width: 50%;
-    max-width: 300px;
-}
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} /* definido margem de cima da div wrapper, largura, modelo de layout flex, ordenando os itens em coluna e alinhando ao centro */
+
+#wrapper div,
+#wrapper ul {
+  width: 50%;
+  max-width: 300px;
+} /* largura em 50% da tela e no maximo de 300px */
+
 ul {
-    padding: 0px;
-}
+  padding: 0px;
+} /* diminuindo a distancia  do conteudo da lista, de sua borda*/
 
 #titulo {
-    font-size: 20px;
-    font-weight: bold;
-    background: white;
-    padding: 10px;
-}
+  font-size: 20px;
+  font-weight: bold;
+  background: white;
+  padding: 10px;
+} /* mudança na fonte do titulo, negrito, cor de fundo e distancia até a borda*/
 
 .alternativa {
-    list-style-type: none;
-    margin-bottom: 4px;
-    padding: 10px;
-    background: #E6E6E6;
-}
+  list-style-type: none;
+  margin-bottom: 4px;
+  padding: 10px;
+  background: #e6e6e6;
+} /* retirando as bolinhas das alternativas, definindo margem inferior, distancia do conteudo até sua borda e cor de fundo cinza*/
 
 .alternativa:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
+  cursor: pointer;
+  opacity: 0.8;
+} /* subfunção hover que vai destacar a alternativa selecionada quando o mouse passar por cima*/
 
 #result {
-    font-weight: bold;
-}
+  font-weight: bold;
+} /*definido negrito*/
 
-#pontos, #result {
-    color: white;
-}
+#pontos,
+#result {
+  color: white;
+} /* cor da fonte branco*/
