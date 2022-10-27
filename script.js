@@ -53,9 +53,11 @@ checaResposta: function(user){
      if(this.qatual.correta == user){
       console.log("Correta");
       this.Totalpontos++;
+      this.mostraresposta(true);
      }
      else{
       console.log("Errada");
+      this.mostraresposta(false);
      }
      this.atualizaPontos();
      this.Proximaperg();
@@ -65,7 +67,27 @@ atualizaPontos: function(){
    let scoreDiv = document.getElementById('pontos');
    scoreDiv.textContent = `Sua pontuação é:  
    ${this.Totalpontos}`;
+},
+
+mostraresposta: function(correto){
+
+   let resultDiv = document.getElementById('result');
+   let result = ''; 
+
+   if(correto){
+      result = 'Resposta Correta!';
+   }
+   else{
+      let pergunta = perguntas[this.Atualpos];
+      let cindice = pergunta.correta;
+      let ctexto = pergunta.alternativas[cindice];
+      result = `Incorreto! Resposta Correta: 
+      ${ctexto}`;
+   }
+   resultDiv.textContent = result;
+
 }
+
 }
 app.start();
 
